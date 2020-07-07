@@ -24,6 +24,10 @@ android {
     }
 }
 
+androidExtensions {
+    experimental = true
+}
+
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
@@ -37,4 +41,6 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     implementation 'ru.nobird.android.ui:AdapterDelegates:1.0.1'
     implementation 'ru.nobird.android.ui:Adapters:1.0.1'
+    implementation 'com.hannesdorfmann:adapterdelegates4-kotlin-dsl:4.3.0'
+    implementation 'com.hannesdorfmann:adapterdelegates4-kotlin-dsl-layoutcontainer:4.3.0'
 }
