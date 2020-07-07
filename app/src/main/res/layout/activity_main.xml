@@ -11,6 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@android:color/white"
+        android:elevation="4dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -85,14 +86,14 @@
                         android:id="@+id/nickField"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="TextView"
+                        android:text="@string/nick"
                         android:textAppearance="@style/cardHeader" />
 
                     <TextView
                         android:id="@+id/gradField"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="TextView"
+                        android:text="@string/grad"
                         android:textAppearance="@style/cardSubHeader" />
                 </LinearLayout>
 
