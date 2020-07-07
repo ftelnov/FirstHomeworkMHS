@@ -27,4 +27,12 @@
         <item name="android:textSize">@dimen/buttonTextSize</item>
         <item name="android:textColor">@color/colorPrimary</item>
     </style>
+
+    <style name="skillName">
+        <item name="android:textSize">@dimen/skillNameSize</item>
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+    <style name="skillExp">
+        <item name="android:textSize">@dimen/skillExpSize</item>
+    </style>
 </resources>
