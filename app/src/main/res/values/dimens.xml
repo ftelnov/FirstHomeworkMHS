@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="headerSize">20sp</dimen>
+    <dimen name="cardHeaderSize">14sp</dimen>
+    <dimen name="cardSubHeaderSize">12sp</dimen>
+    <dimen name="imageSize">100dp</dimen>
+    <dimen name="imageBorderRadius">8dp</dimen>
+    <dimen name="buttonTextSize">14sp</dimen>
+</resources>

@@ -7,4 +7,29 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="NoActionBar" parent="@android:style/Theme.Holo.Light">
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
+    <style name="Header">
+        <item name="android:textSize">@dimen/headerSize</item>
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="cardHeader">
+        <item name="android:textSize">@dimen/cardHeaderSize</item>
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="cardSubHeader">
+        <item name="android:textSize">@dimen/cardSubHeaderSize</item>
+    </style>
+
+    <style name="buttonText">
+        <item name="android:textSize">@dimen/buttonTextSize</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+    </style>
 </resources>
