@@ -9,6 +9,8 @@
     <string name="ava_desc">Аватарка</string>
     <string name="myself_header">Обо мне</string>
     <string name="myself_info">Люблю кодить. Ну реально люблю. Занимаюсь кодингом практически все свободное время. Иногда обучаю азам фронтенда/бэкэнда близких друзей, но пока не очень получается. Андроид это, конечно, хорошо, но есть еще и вэб, который меня тоже приводит в восхищение. Иногда игрушки пишу, ну так, простенькие. Учился во многих комп. школах, но это не важно, думается мне.</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="filter_description">Это изображение фильтра. Что не понятно?</string>
+    <string name="filter_header">Фильтр</string>
+    <string name="accept">Применить</string>
+    <string name="close_desc">Закрыть</string>
 </resources>
