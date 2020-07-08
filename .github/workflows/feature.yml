@@ -20,4 +20,4 @@ jobs:
           java-version: 1.8
 
       - name: Run ktlint
-        run: bash ./gradlew ktlint --stacktrace
+        run: bash ./gradlew lint --stacktrace
