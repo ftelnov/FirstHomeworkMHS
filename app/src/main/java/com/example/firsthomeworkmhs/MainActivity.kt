@@ -17,7 +17,8 @@ class MainActivity : AppCompatActivity() {
         Skill("Java", "~1.5y"),
         Skill("Си/C++", "~3y"),
         Skill("Lua", "0.5y"),
-        Skill("Js+html5+scss", "1.5y"),
+        Skill("Js", "1y"),
+        Skill("scss + html5", "0.5y"),
         Skill("Python", "3y")
     )
     private var skillsAdapter = ListDelegationAdapter(skillsAdapterDelegate())
