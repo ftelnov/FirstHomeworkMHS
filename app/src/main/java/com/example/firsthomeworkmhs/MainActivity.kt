@@ -4,6 +4,7 @@ import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.hannesdorfmann.adapterdelegates4.ListDelegationAdapter
@@ -62,11 +63,17 @@ class MainActivity : AppCompatActivity(), FiltersParentActivity {
             }
         }
 
-    override fun filterFragmentResulted(code: Int, filteredItems: ArrayList<Skill>?) {
-        if (code == 0) {
-            changeStateOfLayouts()
-        } else {
-            // TODO: some handle shit
+    // Код 0 - ничего не делаем; Код 1 - грузи мои элементы; Код 2 - грузи дефолтные
+    override fun filterFragmentResulted(code: Int, filteredItems: List<Skill>?) {
+        if (code == 1) {
+            skillsAdapter.items = filteredItems
+            skillsAdapter.notifyDataSetChanged()
+            filterIcon.setImageResource(R.drawable.ic_fine_ch)
+        } else if (code == 2) {
+            skillsAdapter.items = skills
+            skillsAdapter.notifyDataSetChanged()
+            filterIcon.setImageResource(R.drawable.ic_filter)
         }
+        changeStateOfLayouts()
     }
 }

@@ -19,6 +19,19 @@ import kotlinx.android.synthetic.main.fragment_filter.*
 import kotlinx.android.synthetic.main.skill_item.*
 import java.io.Serializable
 
+/*
+Многоходовочка от Теодора - я вам сейчас объясню, для чего этот фрагмент, а вы не будете меня бить за отсутствие комментариев? Идет? Идет.
+Лук, он сразу получает ссылку на пэрэнта - активность, приводя ее к FiltersParentActivity - этот интерфейс специально был разработан, чтобы этот фрагмент мог сказать родительской активности:
+"Братик, тебе нужно скрыть место, где я лежу, потому что пользователь что-то тыкнул во мне"
+Вот и по такой схеме он работает. Т.е, если в каллбэк летит 0 в первом параметре, то активность просто скрывает этот фрагмент, если же 1 - перезагружает ресайклер новыми элементами
+Что же происходит именно в этом фрагменте? Все просто, у нас есть захардкоженая ссылка на главный чекбокс - ну тот, который за всех отвечает.
+Зачем она захордкожена? Все также просто - мне было немного лень пилить два типа кнопок - хозяина и раба, поэтому я захордколи и элемент, и ссылку на него
+Зачем я ссылку захордкодил? Потому что иначе будут сыпаться NullReferences в событиях делегированных элементов
+Ну а дальше дефолтное взаимодействие - есть мутабельная мапка, где ключ - текст определенного фильтра, а значение - булевка, которая указывает на то, включен этот фильтр или нет
+Соответственно, эта мапка изменяется от кликов по фильтрам.
+Короче, дальше все просто. Основный смысл объяснил :0
+ */
+
 class FilterFragment : Fragment() {
     private lateinit var skills: ArrayList<Skill>
     private lateinit var parent: FiltersParentActivity
@@ -54,7 +67,11 @@ class FilterFragment : Fragment() {
         }
         accept.setOnClickListener {
             if (checkAll.isChecked) {
-                parent.filterFragmentResulted(0, null)
+                parent.filterFragmentResulted(2, null)
+            } else {
+                parent.filterFragmentResulted(
+                    1,
+                    skills.filter { filterDict.filterValues { it }.containsKey(it.exp) })
             }
         }
         allCheckboxSelected = CompoundButton.OnCheckedChangeListener { _, isChecked ->
@@ -62,7 +79,7 @@ class FilterFragment : Fragment() {
                 checkBoxes[i].filterCheck.isChecked = isChecked
             }
         }
-        checkBoxAll = checkAll
+        checkBoxAll = checkAll // Ну да, ссылка. А что вы хотели, если он нулл бросает?
         checkBoxAll.setOnCheckedChangeListener(allCheckboxSelected)
         filterAdapter.items = filterDict.keys.toList()
         with(checkBoxes) {
@@ -77,9 +94,15 @@ class FilterFragment : Fragment() {
                 filterCheck.text = item
                 filterCheck.setOnCheckedChangeListener { _, isChecked ->
                     filterDict[item] = isChecked
+                    checkBoxAll.setOnCheckedChangeListener(null)
                     if (!isChecked) {
                         checkBoxAll.isChecked = false
+                    } else {
+                        if (filterDict.values.all { it }) {
+                            checkBoxAll.isChecked = true
+                        }
                     }
+                    checkBoxAll.setOnCheckedChangeListener(allCheckboxSelected)
                 }
             }
         }
