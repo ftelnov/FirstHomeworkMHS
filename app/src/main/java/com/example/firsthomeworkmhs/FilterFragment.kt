@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.CheckBox
 import android.widget.CompoundButton
 import android.widget.RadioGroup
+import androidx.core.view.forEach
 import androidx.core.view.get
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.hannesdorfmann.adapterdelegates4.ListDelegationAdapter
@@ -45,9 +46,9 @@ class FilterFragment : Fragment() {
         arguments?.let {
             skills = it.getSerializable("skills") as ArrayList<Skill>
         }
-        for (item in skills) {
-            if (!filterDict.containsKey(item.exp)) {
-                filterDict[item.exp] = false
+        skills.forEach {
+            if (!filterDict.containsKey(it.exp)) {
+                filterDict[it.exp] = false
             }
         }
     }
@@ -75,9 +76,7 @@ class FilterFragment : Fragment() {
             }
         }
         allCheckboxSelected = CompoundButton.OnCheckedChangeListener { _, isChecked ->
-            for (i in 0 until filterAdapter.itemCount) {
-                checkBoxes[i].filterCheck.isChecked = isChecked
-            }
+            checkBoxes.forEach { it.filterCheck.isChecked = isChecked }
         }
         checkBoxAll = checkAll // Ну да, ссылка. А что вы хотели, если он нулл бросает?
         checkBoxAll.setOnCheckedChangeListener(allCheckboxSelected)
