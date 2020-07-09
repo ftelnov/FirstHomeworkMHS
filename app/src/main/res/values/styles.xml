@@ -35,4 +35,7 @@
     <style name="skillExp">
         <item name="android:textSize">@dimen/skillExpSize</item>
     </style>
+    <style name="checkBoxText">
+        <item name="android:textSize">@dimen/checkBoxTextSize</item>
+    </style>
 </resources>
