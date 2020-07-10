@@ -35,6 +35,7 @@ android {
 androidExtensions {
     experimental = true
 }
+apply from: '../code_quality_tools/ktlint.gradle'
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
